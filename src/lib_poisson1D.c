@@ -98,11 +98,24 @@ int indexABCol(int i, int j, int *lab) {
 
 int dgbtrftridiag(int *la, int *n, int *kl, int *ku, double *AB, int *lab, int *ipiv, int *info) {
 
-    
-    // Appel à la routine LAPACK dgbtrf pour factorisation LU
-    *info = LAPACKE_dgbtrf(LAPACK_COL_MAJOR, *n, *n, *kl, *ku, AB, *lab, ipiv);
-    
-    return *info;
+    int dgbtrftridiag(int *la, int*n, int *kl, int *ku, double *AB, int *lab, int *ipiv, int *info){
+      int i;
+    double l;
+
+    for (i = 0; i < *n - 1; i++) {
+        if (AB[*ku + i * (*lab)] == 0.0) {
+            *info = i + 1; // Pivot nul, la factorisation échoue
+            return *info;
+        }
+
+        l = AB[*ku - 1 + (i + 1) * (*lab)] / AB[*ku + i * (*lab)]; // Calcul du facteur
+        AB[*ku - 1 + (i + 1) * (*lab)] = l; // Stocke L sous la diagonale principale
+        AB[*ku + (i + 1) * (*lab)] -= l * AB[*ku + 1 + i * (*lab)]; // Mise à jour U
+    }
+
+    *info = 0; // Succès
+  return *info;
+}
 }
 
 
