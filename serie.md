@@ -49,8 +49,7 @@ La dimension principale (ou `ld`) représente le nombre d'éléments stockés da
 
 - En colonne majeure, `ld` correspond au nombre de lignes physiques dans la mémoire.
 
-### Exemple :
-Pour une matrice \(4 \times 3\) en colonne majeure, `ld = 4`.
+
 
 ---
 
