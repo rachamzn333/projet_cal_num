@@ -24,38 +24,26 @@ void set_GB_operator_colMajor_poisson1D(double *AB, int *lab, int *la, int *kv) 
         }
     }
 }
-
-
-
-
 void set_GB_operator_colMajor_poisson1D_Id(double* AB, int *lab, int *la, int *kv) {
     int i, j;
 
-    // Dimensions
-    int n = *la;        // Taille de la matrice (nombre de lignes ou colonnes)
-    int l = *lab;       // Nombre de lignes dans la matrice bande
-    int kv_diag = *kv;  // Position de la diagonale principale
-
-    // Initialisation de la matrice bande AB à zéro
-    for (i = 0; i < l * n; i++) {
-        AB[i] = 0.0;
+    // Initialiser la matrice bande AB à zéro
+    for (j = 0; j < *la; j++) {
+        for (i = 0; i < *lab; i++) {
+            AB[i + j * (*lab)] = 0.0;
+        }
     }
 
-    // Remplissage de la diagonale principale
-    for (j = 0; j < n; j++) {
-        AB[kv_diag + j * l] = 2.0;  // Coefficient diagonal principal
+    // Remplir la diagonale principale avec 1.0
+    for (j = 0; j < *la; j++) {
+        AB[*kv + j * (*lab)] = 1.0;
     }
 
-    // Remplissage de la sous-diagonale
-    for (j = 1; j < n; j++) {
-        AB[kv_diag - 1 + j * l] = -1.0;  // Coefficient de la sous-diagonale
-    }
-
-    // Remplissage de la sur-diagonale
-    for (j = 0; j < n - 1; j++) {
-        AB[kv_diag + 1 + j * l] = -1.0;  // Coefficient de la sur-diagonale
-    }
+    // Remplir les sous-diagonales et sur-diagonales avec 0.0 (déjà initialisé à zéro)
 }
+
+
+
 
 
 void set_dense_RHS_DBC_1D(double *RHS, int *la, double *T0, double *T1) {
