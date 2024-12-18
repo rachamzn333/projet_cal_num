@@ -2,8 +2,6 @@
 
 # Exercice 3
 
-Ce document explique comment utiliser les bibliothèques BLAS et LAPACK pour manipuler des matrices et résoudre des systèmes linéaires. Il couvre les concepts clés et les fonctions essentielles avec des exemples en C.
-
 ---
 
 ## 1. Comment déclarer et allouer une matrice pour utiliser BLAS et LAPACK ?
@@ -247,7 +245,6 @@ Pour valider le résultat :
 
 # exercice 5
 
-Ce document explique comment résoudre un système linéaire avec une matrice bande en utilisant les fonctions LAPACK `dgbtrf` et `dgbtrs`. Il détaille les étapes de l'implémentation, la complexité algorithmique, et fournit un exemple complet en C.
 
 ---
 
