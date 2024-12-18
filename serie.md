@@ -301,17 +301,14 @@ La routine `dgbtrf` réalise la factorisation LU d'une matrice bande. La complex
 
 #### Formule :
 \[
-\text{Complexité} = N \cdot (2 \cdot KL \cdot KU)
+Complexité = N * (KL + KU)
+
 \]
 - \(N\) : Taille de la matrice.
 - \(KL\) : Nombre de sous-diagonales.
 - \(KU\) : Nombre de sur-diagonales.
 
-#### Exemple :
-Pour une matrice tridiagonale (\(KL = KU = 1\)) de taille \(N = 1000\) :
-\[
-\text{Complexité} = 1000 \cdot (2 \cdot 1 \cdot 1) = 2000 \text{ flops.}
-\]
+
 
 ---
 
@@ -321,14 +318,11 @@ Après la factorisation LU, la résolution du système avec `dgbtrs` est proport
 
 #### Formule :
 \[
-\text{Complexité} = N \cdot (KL + KU)
+Complexité = N * (KL + KU)
+
 \]
 
-#### Exemple :
-Pour une matrice tridiagonale (\(KL = KU = 1\), \(N = 1000\)) :
-\[
-\text{Complexité} = 1000 \cdot (1 + 1) = 2000 \text{ flops.}
-\]
+
 
 ---
 
@@ -336,29 +330,26 @@ Pour une matrice tridiagonale (\(KL = KU = 1\), \(N = 1000\)) :
 
 La complexité totale est la somme des étapes de factorisation et de résolution :
 \[
-\text{Complexité Totale} = N \cdot (2 \cdot KL \cdot KU) + N \cdot (KL + KU)
+Complexité Totale = N * (2 * KL * KU) + N * (KL + KU)
+
 \]
 
-#### Exemple :
-Pour une matrice tridiagonale (\(KL = KU = 1\), \(N = 1000\)) :
-- **Factorisation LU (`dgbtrf`)** : 2000 flops.
-- **Résolution (`dgbtrs`)** : 2000 flops.
-\[
-\text{Complexité Totale} = 2000 + 2000 = 4000 \text{ flops.}
-\]
+
 
 #### Validation pour des Matrices Plus Larges :
 Pour une matrice bande avec \(KL = KU = 5\) et \(N = 1000\) :
 - **Factorisation LU (`dgbtrf`)** :
 \[
-1000 \cdot (2 \cdot 5 \cdot 5) = 50,000 \text{ flops.}
+1000 * (2 * 5 * 5) = 50,000 flops
 \]
 - **Résolution (`dgbtrs`)** :
 \[
-1000 \cdot (5 + 5) = 10,000 \text{ flops.}
+1000 * (5 + 5) = 10,000 flops
+
 \]
 \[
-\text{Complexité Totale} = 50,000 + 10,000 = 60,000 \text{ flops.}
+Complexité Totale = 50,000 + 10,000 = 60,000 flops
+
 \]
 
 ---
