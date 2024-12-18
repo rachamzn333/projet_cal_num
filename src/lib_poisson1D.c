@@ -96,8 +96,6 @@ int indexABCol(int i, int j, int *lab) {
 }
 
 
-int dgbtrftridiag(int *la, int *n, int *kl, int *ku, double *AB, int *lab, int *ipiv, int *info) {
-
     int dgbtrftridiag(int *la, int*n, int *kl, int *ku, double *AB, int *lab, int *ipiv, int *info){
       int i;
     double l;
@@ -116,7 +114,7 @@ int dgbtrftridiag(int *la, int *n, int *kl, int *ku, double *AB, int *lab, int *
     *info = 0; // Succès
   return *info;
 }
-}
+
 
 
 
