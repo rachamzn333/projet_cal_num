@@ -148,7 +148,8 @@ Le résidu relatif mesure la précision d'une solution calculée.
 
 ### Formule :
 \[
-\text{Residue} = \frac{\|B - AX\|_2}{\|B\|_2}
+Residue = ||B - AX||_2 / ||B||_2
+
 \]
 
 ### Exemple de code :
