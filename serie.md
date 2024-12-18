@@ -69,7 +69,8 @@ void cblas_dgbmv(const CBLAS_LAYOUT Layout, const CBLAS_TRANSPOSE Trans,
 ### Fonctionnement :
 Elle calcule :
 \[
-Y = \alpha \cdot A \cdot X + \beta \cdot Y
+Y = α * A * X + β * Y
+
 \]
 - `A` : matrice bande.
 - `KL` et `KU` : nombres de sous-diagonales et sur-diagonales de `A`.
