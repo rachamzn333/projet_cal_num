@@ -481,15 +481,9 @@ void validate_LU(double* AB, int N) {
 ## 3. Résolution Itérative avec la Méthode de Jacobi
 
 ### Principe de la Méthode de Jacobi
-La méthode de Jacobi résout un système linéaire \(AX = B\) en construisant une suite d'approximations \(X^{(k)}\).
-
-#### Formule de Mise à Jour :
-\[
-X_i^{(k+1)} = \frac{1}{A_{ii}} \left(B_i - \sum_{j \neq i} A_{ij} X_j^{(k)}\right)
-\]
-
+La méthode de Jacobi résout un système linéaire \(AX = B\) en construisant une suite d'approximations X^(k).
 ### Implémentation en C avec BLAS
-
+X_i^(k+1) = (1 / A_ii) * (B_i - Σ (A_ij * X_j^(k)) pour j ≠ i)
 #### Code C :
 ```c
 #include <stdio.h>
