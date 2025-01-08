@@ -4,6 +4,7 @@
 /* Poisson problem (Heat equation)            */
 /**********************************************/
 #include "lib_poisson1D.h"
+#include <math.h>
 
 void eig_poisson1D(double* eigval, int *la) {
     for (int i = 0; i < *la; i++) {
@@ -20,9 +21,18 @@ double eigmin_poisson1D(int *la) {
     return 2.0 - 2.0 * cos(M_PI / (*la + 1));
 }
 
-double richardson_alpha_opt(int *la){
-  return 0;
+
+
+double richardson_alpha_opt(int *la) {
+    // Calcul des valeurs propres minimales et maximales analytiques pour le problème de Poisson 1D
+    double lambda_min = 2.0 - 2.0 * cos(M_PI / (*la + 1)); // λ_min
+    double lambda_max = 2.0 - 2.0 * cos(M_PI * (*la) / (*la + 1)); // λ_max
+
+    // Calcul de l'alpha optimal
+    double alpha_opt = 2.0 / (lambda_min + lambda_max);
+    return alpha_opt;
 }
+
 
 void richardson_alpha(double *AB, double *RHS, double *X, double *alpha_rich, int *lab, int *la, int *ku, int*kl, double *tol, int *maxit, double *resvec, int *nbite) {
     double *residual = malloc(*la * sizeof(double));
